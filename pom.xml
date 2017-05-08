@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.teamtter.docs</groupId>
+	<artifactId>asciidoc-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>asciidoc-test</name>
+	<description>misc asciidoc tests</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>1.8</java.version>
+
+	</properties>
+
+        <dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.16</version>
+		</dependency>
+                
+	</dependencies>
+
+	<build>
+		<plugins>
+
+                    <plugin>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <version>1.5.5</version>
+                        <executions>
+                            <execution>
+                                <id>output-html</id> 
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                            </execution>
+                        <!--
+                        sourceDirectory
+                            defaults to ${basedir}/src/main/asciidoc
+                        resources
+                            list of resource files to copy to the output directory (e.g., images, css)
+                        preserveDirectories
+                            enables to specify whether the documents should be rendered in the same folder structure as in the source directory or not, defaults to false
+                        -->
+                        </executions>
+                        <configuration>
+                            <!--
+                            <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                            <outputDirectory>target/docs/asciidoc</outputDirectory>
+                            -->
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <stylesheet>my-theme.css</stylesheet>
+                            </attributes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+
+</project>
